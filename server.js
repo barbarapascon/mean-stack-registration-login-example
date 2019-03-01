@@ -48,7 +48,7 @@ api.use(bodyParser.json());
 // de autenticação e registro de usuários. Essa camada de segurança é muito boa, porque ajuda
 // na diminuição do tratamento de mensagens indevidas na aplicação
 api.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
-
+// nao precisa do token para autenticathe e para registro.
 // Aqui o mapemanto das rotas da aplicação. Todos esses mapeamentos fazem parte da aplicação
 // A cada require, o js é inicializado
 app.use('/login', require('./controllers/login.controller'));
