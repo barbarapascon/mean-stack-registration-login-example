@@ -18,6 +18,13 @@
                 controllerAs: 'vm',
                 data: { activeTab: 'home' }
             })
+            .state('questionario', {
+                url: '/',
+                templateUrl: 'questionario/questionario.html',
+                controller: 'questionario.QuestionarioController',
+                controllerAs: 'vm',
+                data: { activeTab: 'questionario' }
+            })
             .state('account', {
                 url: '/account',
                 templateUrl: 'account/index.html',
