@@ -91,7 +91,7 @@ function getAllQuestion(){
             }
             questionArray = questionArray+"]}";
 
-            deferred.resolve(questionArray);
+            deferred.resolve(questions);
         } else {
 
             deferred.resolve();

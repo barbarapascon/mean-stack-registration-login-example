@@ -11,7 +11,7 @@
         vm.questao = null;
         vm.saveQuestionario = saveQuestionario;
         vm.deleteQuestionario = deleteQuestionario;
-        vm.allquestion = null;
+        vm.allQuestion = null;
         vm.getAll = getAll;
 
         initController();
@@ -19,24 +19,28 @@
         function initController() {
             // get current questionario
             QuestionarioService.GetAll().then(function (questionario) {
-                vm.questao = questionario;
+                vm.allQuestion = questionario;
             });
         }
         function saveQuestionario() {
             QuestionarioService.Create(vm.questao)
                 .then(function () {
                     FlashService.Success('Question created');
+                    QuestionarioService.GetAll().then(function (questionario) {
+                        vm.allQuestion = questionario;
+                    });
                 })
                 .catch(function (err) {
                     FlashService.Success(err);
                 });
         }
 
-        function deleteQuestionario() {
-            QuestionarioService.Delete(vm.questionario._id)
+        function deleteQuestionario(_id) {
+            QuestionarioService.Delete(_id)
                 .then(function () {
-                    // log questionario out
-                    $window.location = '/login';
+                    QuestionarioService.GetAll().then(function (questionario) {
+                        vm.allQuestion = questionario;
+                    });
                 })
                 .catch(function (error) {
                     FlashService.Error(error);

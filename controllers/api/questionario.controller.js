@@ -41,11 +41,7 @@ function getCurrentQuestao(req, res) {
 
 
 function deleteQuestao(req, res) {
-    var questionarioId = req.session.questionarioId;
-    if (req.params._id !== questionarioId) {
-        // can only delete own account
-        return res.status(401).send('You can only delete your own account');
-    }
+    var questionarioId = req.params._id;
 
     questionarioService.delete(questionarioId)
         .then(function () {

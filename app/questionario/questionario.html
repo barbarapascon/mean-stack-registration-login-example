@@ -9,17 +9,31 @@
         </div>
         <button class="btn btn-primary" ng-click="vm.saveQuestionario()">Save</button>
         <div>
-            <table>
-                <tr ng-repeat="x in vm.questao">
-                    <td>{{ x.questao }}</td>
+            <table style="
+            border-collapse: collapse;
+            width: 100%;
+        ">
+                <tr ng-repeat="x in vm.allQuestion">
+                    <td style="
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                ">{{ x.questao }}</td>
+                    <td style="
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                ">{{ x._id }}</td>
+                    <td style="
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                ">  <button class="btn-danger" ng-click="vm.deleteQuestionario(x._id)">Delete</button> </td>
                 </tr>
             </table>
         </div>
         <div class="form-group">
-            <button class="btn btn-danger" ng-click="vm.deleteQuestao()">Delete</button>
-        </div>
-        <div class="question-saved">
-            {{vm.questao}}
+           
         </div>
         </form>
         </div>
